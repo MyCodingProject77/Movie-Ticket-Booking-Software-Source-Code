@@ -1,0 +1,27 @@
+
+          Submit Button Code
+
+
+          SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-ADG77QL\SQLEXPRESS;Initial Catalog=ticketdb;Integrated Security=True");
+
+
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("insert into usertab Values(@id,@movie,@tickets,@seattype,@total)", con);
+
+            cmd.Parameters.AddWithValue("@Id", int.Parse(textBox1.Text));
+            cmd.Parameters.AddWithValue("@Movie", comboBox1.GetItemText(comboBox1.SelectedItem));
+
+            cmd.Parameters.AddWithValue("@Tickets", textBox2.Text);
+
+            cmd.Parameters.AddWithValue("@SeatType", textBox3.Text);
+
+            cmd.Parameters.AddWithValue("@Total", comboBox2.GetItemText(comboBox2.SelectedItem));
+
+            
+
+            
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Submitted Successfully!");
